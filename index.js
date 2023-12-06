@@ -1,13 +1,6 @@
-const { registrar, leer } = require("./operaciones");
+const { registrar, leer, eliminar } = require("./operaciones");
 
-const argumentos = process.argv.slice(2);
-
-const operacion = argumentos[0];
-const nombre = argumentos[1];
-const edad = argumentos[2];
-const animal = argumentos[3];
-const color = argumentos[4];
-const enfermedad = argumentos[5];
+const [operacion, nombre, edad, animal, color, enfermedad] = process.argv.slice(2);
 
 if(operacion === "registrar"){
     registrar(nombre, edad, animal, color, enfermedad)
@@ -15,4 +8,8 @@ if(operacion === "registrar"){
 
 if(operacion === "leer"){
     leer()
+}
+
+if(operacion === "eliminar"){
+    eliminar()
 }

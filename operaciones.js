@@ -17,8 +17,16 @@ const registrar = (nombre, edad, animal, color, enfermedad) => {
 }
 
 const leer = () => {
-    const contenido = fs.readFileSync('citas.json', 'utf-8');
+    const contenido = JSON.parse(fs.readFileSync('citas.json', 'utf-8'));
     console.log(contenido);
 }
 
-module.exports = { registrar, leer }
+const eliminar = () => {
+    fs.writeFileSync('citas.json', JSON.stringify([]));
+    console.log('Citas eliminadas con éxito');
+}
+
+// agregar función para actualizar (update)
+
+
+module.exports = { registrar, leer, eliminar }
