@@ -1,15 +1,33 @@
-const { registrar, leer, eliminar } = require("./operaciones");
+const { registrar, leer, eliminar, actualizar } = require("./operaciones");
 
 const [operacion, nombre, edad, animal, color, enfermedad] = process.argv.slice(2);
 
-if(operacion === "registrar"){
-    registrar(nombre, edad, animal, color, enfermedad)
-}
+switch (operacion) {
 
-if(operacion === "leer"){
-    leer()
-}
+    case "registrar":
+        if (!nombre || !edad || !animal || !color || !enfermedad) {
+            console.log("\n Por favor ingrese todos los datos \n");
+        } else {
+            registrar(nombre, edad, animal, color, enfermedad);
+        }
+        break;
 
-if(operacion === "eliminar"){
-    eliminar()
+    case "leer":
+        leer();
+        break;
+
+    case "eliminar":
+        eliminar();
+        break;
+
+    case "actualizar":
+        if (!nombre || !edad || !animal || !color || !enfermedad) {
+            console.log("\n Por favor ingrese todos los datos \n");
+        } else {
+            actualizar(nombre, edad, animal, color, enfermedad);
+        }
+        break;
+
+    default:
+        console.log("\n Operación desconocida \n");
 }
