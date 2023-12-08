@@ -1,10 +1,9 @@
 const fs = require('fs').promises;
 
 const json = 'citas.json';
-const citas = JSON.parse(await fs.readFile(json, 'utf8') || '[]');
 
 const registrar = async (nombre, edad, animal, color, enfermedad) => {
-
+    
     const cita = { 
         nombre, 
         edad, 
@@ -12,6 +11,8 @@ const registrar = async (nombre, edad, animal, color, enfermedad) => {
         color, 
         enfermedad 
     };
+    
+    const citas = JSON.parse(await fs.readFile(json, 'utf8') || '[]');
 
     citas.push(cita);
     await fs.writeFile(json, JSON.stringify(citas));
@@ -37,6 +38,8 @@ const actualizar = async (nombre, nuevaEdad, nuevoAnimal, nuevoColor, nuevaEnfer
         color: nuevoColor, 
         enfermedad: nuevaEnfermedad 
     };
+
+    const citas = JSON.parse(await fs.readFile(json, 'utf8') || '[]');
     
     const indice = citas.findIndex(c => c.nombre === nombre);
     if (indice !== -1) {
